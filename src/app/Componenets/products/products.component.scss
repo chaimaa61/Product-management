@@ -1,0 +1,60 @@
+table{
+    width: 80%;
+    border: 1px solid #ccc;
+    margin: 16px auto;
+    th {
+        span {
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        padding: 12px;
+        background-color: antiquewhite;
+    }
+    td{
+        padding: 8px;
+        text-align: center;
+    }
+    button{
+        margin: 5px;
+    }
+
+}
+.add{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: auto;
+    align-items: center;
+    button{
+        width: 20%;
+    }
+}
+
+
+.pop-up{
+    background-color: #cccccc49;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    .container {
+        form {
+            margin: 24px auto;
+            width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        
+    }
+}
+.input{
+    position: relative;
+    left: 40%;
+    margin: auto;
+}
+
+ 

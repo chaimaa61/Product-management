@@ -1,0 +1,66 @@
+<!-- <h1>{{title}}</h1> -->
+
+<input class="input" type="text" placeholder="Search By name" [(ngModel)]="searchItem" >
+
+<table>
+    <thead>
+        <tr>
+            <!-- <th>ID  <span class="up" (click)="sortedbyReverse('asc','id')">&uarr;</span> <span class="down" (click)="sortedbyReverse('desc','id')">&darr;</span></th> -->
+            <th>ID  <span class="up" (click)="sortedby('id')">&uarr;</span> <span class="down" (click)="reverseSort('id')">&darr;</span></th>
+            <th>Name  <span class="up" (click)="sortedby('name')">&uarr;</span> <span class="down" (click)="reverseSort('name')">&darr;</span></th>
+            <th>Price  <span class="up" (click)="sortedby('price')">&uarr;</span> <span class="down" (click)="reverseSort('price')">&darr;</span></th>
+            <th>Category  <span class="up" (click)="sortedby('category')">&uarr;</span> <span class="down" (click)="reverseSort('category')">&darr;</span></th>
+            <th>Stock  <span class="up" (click)="sortedby('stock')">&uarr;</span> <span class="down" (click)="reverseSort('stock')">&darr;</span></th>
+            <th>Update</th>
+            <th>Delete</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products | filter : searchItem | sort : colomn | reverse : columnRev" [appHighlight]="product.stock">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.price | currency}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.stock}}</td>
+            <td (click)="edit(product)"><button nz-button nzType="primary" nzGhost>Edit</button></td>
+            <td (click)="delete(product)"><button nz-button nzType="primary" nzGhost>Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+<form class="add" (ngSubmit)="addProduct()">
+    
+    <label>
+        Name
+        <input [(ngModel)]="newProduct.name" type="text" name="product-name" placeholder="Product Name">
+    </label>
+    <label>
+        Price
+        <input [(ngModel)]="newProduct.price" type="number" name="product-price" placeholder="Product Price">
+    </label>
+    <label>
+        Category
+        <input [(ngModel)]="newProduct.category" type="text" name="product-category" placeholder="Product Category">
+    </label>
+    <label>
+        Stock
+        <input [(ngModel)]="newProduct.stock" type="number" name="product-stock" placeholder="Product Stock">
+    </label>
+    <button type="submit">Add Product</button>
+</form>
+
+
+
+<div class="pop-up" [ngStyle]="{display: showForm}">
+    <div class="container">
+        <form >
+            <input name="name" type="text" placeholder="Name" [(ngModel)]="up_name">
+            <input name="price" type="number" placeholder="Price" [(ngModel)]="up_price">
+            <input name="category" type="text" placeholder="Category" [(ngModel)]="up_category">
+            <input name="stock" type="number" placeholder="Stock" [(ngModel)]="up_stock">
+            <button (click)="update()">update</button>
+            <button (click)="close()">cancel</button>
+        </form>
+    </div>
+</div>
